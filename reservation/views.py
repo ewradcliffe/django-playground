@@ -8,7 +8,9 @@ from .models import Reservation
  #   return HttpResponse("Hello reservations!")
 
 class ReservationList(generic.ListView):
-    model = Reservation
+    #model = Reservation
+    queryset = Reservation.objects.all()
+    template_name = "reservation_list.html"
 
 
     

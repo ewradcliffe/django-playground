@@ -10,11 +10,11 @@
 
 <body>
     <h1>Reservations list</h1>
-    {% for reservations in object_list %}
-    <h2>Name: {{reservation.reservation_name}}</h2>
-    <p>Date: {{reservation.reservation_date}}</p>
-
+    {% for reservation in reservation_list %}
+    <p>Name: {{ reservation.reservation_name }}</p>
+    <p>Date: {{ reservation.reservation_date }}</p>
     {% endfor %}
+
 </body>
 
 </html>
