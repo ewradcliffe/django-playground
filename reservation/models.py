@@ -13,6 +13,12 @@ class Customer(models.Model):
     phone_number = models.IntegerField(unique=True, blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        """
+        Displays name on customer profile.
+        """
+        return f"{self.name}"
+
 
 class Reservation(models.Model):
     """
@@ -25,4 +31,18 @@ class Reservation(models.Model):
     reservation_size = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(20)])
     reservation_booked_by = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        """
+        Orders reservations. Soonest reservations first."
+        """
+        ordering = ["-reservation_time"]
+
+
+    def __str__(self):
+        """
+        Displays most useful reservation information.
+        """
+        return f"{self.reservation_name} | {self.reservation_date} | {self.reservation_time} | {self.reservation_size}"
+
 
