@@ -18,12 +18,12 @@ from django.contrib import admin
 from django.urls import path, include
 from home.views import my_home
 from menu.views import my_menu
-#from reservation.views import my_reservations
 
 
 urlpatterns = [
     path('', my_home, name='home'),
-    path('menu/', my_menu, name='menu'),
     path('reservation/', include("reservation.urls"), name='reservation-urls'),
+    path("accounts/", include("allauth.urls")),
+    path('menu/', my_menu, name='menu'),
     path('admin/', admin.site.urls),
 ]

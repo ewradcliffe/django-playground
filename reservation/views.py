@@ -11,6 +11,7 @@ class ReservationList(generic.ListView):
     #model = Reservation
     queryset = Reservation.objects.all()
     template_name = "reservation_list.html"
+    
 
 
     
